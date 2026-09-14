@@ -11,6 +11,7 @@ pinned: false
 # Petra Assistant — Personal RAG Chatbot
 
 Chatbot berbasis **Retrieval-Augmented Generation (RAG)** yang menjawab pertanyaan tentang latar belakang, pengalaman, dan riset saya (Petra Andhika Natanael) berdasarkan dokumen referensi (CV, ringkasan riset skripsi TrackNetV3, dll).
+Bisa diakses di: https://petraa3-petra-assistant-api.hf.space/
 
 ---
 
