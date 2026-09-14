@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Petra Assistant</title>
+  
+  <!-- Font Google (Inter) & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Marked.js Parser CDN untuk Render Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Sidebar / Top Navigation Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-avatar">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="brand-info">
+          <h1>Petra Assistant <span class="badge-v">AI</span></h1>
+          <p>Tanya apa saja tentang saya — mulai dari pengalaman, proyek AI, sampai penelitian</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="status online" id="status">
+          <span class="status-dot"></span>
+          <span id="status-text">Server Aktif</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Chat Window Content -->
+    <main class="chat-window" id="chat-window">
+      
+      <!-- Welcome Message -->
+      <div class="msg assistant">
+        <div class="avatar">
+          <i class="fa-solid fa-sparkles"></i>
+        </div>
+        <div class="bubble-wrapper">
+          <span class="sender-name">Petra Assistant</span>
+          <div class="bubble">
+            Halo! Saya <strong>Petra Assistant</strong> 👋 Saya di sini buat cerita soal Petra Andhika Natanael — latar belakang, proyek-proyek AI/computer vision yang pernah dikerjakan, sampai riset skripsinya. Atau sekadar ngobrol juga boleh!
+          </div>
+          
+          <!-- Quick Suggestion Pills -->
+          <div class="suggestion-container">
+            <span class="suggestion-title">Pertanyaan cepat:</span>
+            <div class="suggestion-pills">
+              <button class="pill" onclick="sendQuickQuery('Halo, kenalan dulu yuk!')">👋 Kenalan dulu</button>
+              <button class="pill" onclick="sendQuickQuery('Ceritakan pengalaman kerja dan skill utama Petra Andhika Natanael.')">💼 Pengalaman & Skill</button>
+              <button class="pill" onclick="sendQuickQuery('Proyek AI atau computer vision apa saja yang pernah dikerjakan Petra Andhika Natanael?')">🖼️ Proyek AI Petra</button>
+              <button class="pill" onclick="sendQuickQuery('Ceritakan riset skripsi TrackNetV3 milik Petra Andhika Natanael.')">🔬 Riset TrackNetV3</button>   
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Interactive Composer Input Area -->
+    <footer class="composer-container">
+      
+      <!-- Wadah Pratinjau File Sebelum Diupload -->
+      <div id="file-preview" style="display: none;"></div>
+
+      <form class="composer" id="composer">
+        <div class="input-wrapper">
+          <textarea
+            id="input"
+            placeholder="Tulis pertanyaan Anda di sini... (Shift+Enter untuk baris baru)"
+            rows="1"
+            autofocus
+          ></textarea>
+        </div>
+
+        <!-- Hidden File Input -->
+        <input type="file" id="file-input" accept="application/pdf" hidden>
+
+        <!-- Upload PDF Button -->
+        <button class="upload-btn" id="upload-btn" type="button" aria-label="Pilih dokumen PDF" title="Pilih PDF">
+          <i class="fa-solid fa-paperclip"></i>
+        </button>
+        
+        <!-- Send Button -->
+        <button type="submit" id="send-btn" aria-label="Kirim Pesan">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Kirim</span>
+        </button>
+      </form>
+
+      <div class="composer-footer">
+        <span>Tekan <strong>Enter</strong> untuk mengirim, <strong>Shift + Enter</strong> untuk baris baru.</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

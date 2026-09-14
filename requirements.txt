@@ -1,0 +1,13 @@
+flask
+flask-cors
+rank_bm25
+sentence-transformers
+pypdf
+langchain-text-splitters
+numpy
+requests
+torch
+python-docx
+
+# openai          
+google-genai 
